@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald&family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" type="image/x-icon" href="fevicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <style>
+        *{
+            /* background-color: #E6E6E6; */
+            font-family: 'Roboto', sans-serif;
+        }
+        .title{
+            font-size: 4.5rem;
+            text-transform: capitalize;
+            color: #1488e7;
+            font-family: 'Creepster', cursive;
+        }
+        .text{
+            font-size: 1.7rem;
+        }
+        .dobtext, .currtext{
+            font-size: 2rem;
+            text-transform: capitalize;
+            font-weight:500;
+        }
+        .display{
+            text-transform: capitalize;
+            font-size: 1.4rem;
+        }
+        input[type="date"] {
+             font-size: 1.4rem;
+             padding: 8px;
+             border-radius: 5px;
+             border-radius: 5px;
+             text-align: center;
+        }
+        input[type="button"]{
+            font-size: 1.4rem;
+            border-radius: 5px;
+            border: 1px solid black;
+            background-color: #AED5F5;
+            text-transform: capitalize;
+        }
+        input[type="button"]:hover{
+            cursor: pointer;
+            box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.292);
+        }
+        .display{
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.6rem;
+        }
+        
+    </style>
+</head>
+<body style="background-color: #f4f4f4">
+    <!-- title -->
+      <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="text-center title">
+                    age calculator
+                </div>
+            </div>
+        </div>
+      </div>
+    <!-- text  -->
+    <div class="container ">
+        <div class="row">
+            <div class="col-12 pt-3">
+                <p class="text-center text">
+                    To calculate age, you need to enter the birthdate of the person and the current date, and the age calculator will do the rest.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- calculator  -->
+    <div class="container" id="backcolor">
+        <div class="row pt-4 ">
+            <div class="col-12 text-center">
+                <p class=" dobtext">
+                    enter the date of birth
+                </p>
+                <input type="date" name="" id="dob">
+                <p class="currtext pt-3">
+                    enter the current date
+                </p>
+                <input type="date" name="" id="curd">
+            </div>
+        </div>
+        <div class="row py-4">
+            <div class="col-12 text-center">
+                <input type="button" name="" id="" value="calculate" onclick="calculateage()">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <pre class="display mx-3">
+Age : <span id="years"></span>
+Total months    : <span id="months"></span>
+Total days         : <span id="days"></span>
+Total hours       : <span id="hours"></span>
+Total minutes    : <span id="minutes"></span>
+Total seconds   : <span id="seconds"></span>
+                </pre>
+            </div>
+        </div>
+    </div>
+    <script>
+        function calculateage(){
+
+                var birthdate = new  Date(document.getElementById('dob').value);
+                var currentdate = new Date(document.getElementById('curd').value);
+                var ageInMilliseconds = currentdate - birthdate;
+                var ageInSeconds = ageInMilliseconds / 1000;
+                var ageInMinutes = ageInSeconds / 60;
+                var ageInHours = ageInMinutes / 60;
+                var ageInDays = ageInHours / 24;
+                var ageInMonths = ageInDays / 30.44;
+                var ageInYears = ageInMonths / 12;
+        
+                document.getElementById("years").innerHTML = Math.floor(ageInYears)+" Years";
+                document.getElementById("months").innerHTML = Math.floor(ageInMonths );
+                document.getElementById("days").innerHTML = Math.floor(ageInDays );
+                document.getElementById("hours").innerHTML = Math.floor(ageInHours );
+                document.getElementById("minutes").innerHTML = Math.floor(ageInMinutes );
+                document.getElementById("seconds").innerHTML = Math.floor(ageInSeconds );
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
